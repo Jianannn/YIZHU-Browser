@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>数据分析 - 易住酒店后台管理系统</title>
+    <link rel="icon" href="favicon.ico" type="image/ico">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="css/style.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="lyear-layout-web">
+
+    <div class="lyear-layout-sidebar-scroll">
+
+            <div class="container-fluid">
+
+                <div class="row">
+
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-header"><h4>每月入住人次</h4></div>
+                            <div class="card-body">
+                                <canvas id="chart-area-1" width="400" height="250"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-header"><h4>每周入住人次</h4></div>
+                            <div class="card-body">
+                                <canvas id="chart-area-2" width="400" height="250"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-header"><h4>住户年龄构成</h4></div>
+                            <div class="card-body">
+                                <canvas id="chart-pie-1" width="280" height="280"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-header"><h4>住户性别构成</h4></div>
+                            <div class="card-body">
+                                <canvas id="chart-pie-2" width="280" height="280"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-header"><h4>主要户籍构成</h4></div>
+                            <div class="card-body">
+                                <canvas id="chart-pie-3" width="280" height="280"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+    </div>
+</div>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/perfect-scrollbar.min.js"></script>
+<script type="text/javascript" src="js/main.min.js"></script>
+
+<!--图表插件-->
+<script type="text/javascript" src="js/Chart.js"></script>
+<script type="text/javascript">
+    new Chart($("#chart-area-1"), {
+        type: 'line',
+        data: {
+            labels: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月","十月","十一月","十二月"],
+            datasets: [{
+                label: "人次",
+                backgroundColor: "rgba(51,202,185,0.5)",
+                borderWidth: 0,
+                borderColor: "rgba(0,0,0,0)",
+                data: [6882, 7564, 6598, 6234, 6009, 6990, 8234, 8897, 6754, 7632, 5632, 5989]
+            }]
+        },
+        options: {
+            legend: {
+                display: false
+            },
+        }
+    });
+
+    new Chart($("#chart-area-2"), {
+        type: 'line',
+        data: {
+            labels: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"],
+            datasets: [{
+                label: "本周（人次）",
+                backgroundColor: "rgba(51,202,185,0.5)",
+                borderColor: "rgba(0,0,0,0)",
+                pointBackgroundColor: "rgba(51,202,185,0.5)",
+                pointBorderColor: "#fff",
+                pointHoverBackgroundColor: "#fff",
+                pointHoverBorderColor: "rgba(51,202,185,0.5)",
+                data: [207, 192, 180, 171, 287, 355, 389]
+            },
+                {
+                    label: "平均（人次）",
+                    backgroundColor: "rgba(243,245,246,1)",
+                    borderColor: "rgba(0,0,0,0)",
+                    pointBackgroundColor: "rgba(243,245,246,1)",
+                    pointBorderColor: "#fff",
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: "rgba(243,245,246,1)",
+                    data: [223, 190, 164, 162, 293, 385, 402]
+                }]
+        },
+        options: {}
+    });
+
+    new Chart($("#chart-pie-1"), {
+        type: 'pie',
+        data: {
+            labels: ["<18岁", "19-24岁", "25-30岁", "31-40岁", "41-50岁", ">50岁"],
+            datasets: [{
+                data: [8, 22, 30, 20, 12, 8],
+                backgroundColor: ['orange', 'yellow', 'green', 'blue', 'indigo', 'purple']
+            }]
+        },
+        options: {
+            responsive: false
+        }
+    });
+
+    new Chart($("#chart-pie-2"), {
+        type: 'pie',
+        data: {
+            labels: ["男", "女"],
+            datasets: [{
+                data: [58, 42],
+                backgroundColor: ['rgba(54, 162, 235, 1)', 'rgba(255,99,132,1)']
+            }]
+        },
+        options: {
+            responsive: false
+        }
+    });
+
+    new Chart($("#chart-pie-3"), {
+        type: 'pie',
+        data: {
+            labels: ["浙江", "广东", "上海", "江苏", "北京", "安徽", "山东", "其他", "境外"],
+            datasets: [{
+                data: [20, 10, 13, 10, 10, 8, 6,15, 8],
+                backgroundColor: ['maroon', 'orange', 'yellow', 'green', 'blue', 'indigo', 'red', 'purple', 'grey']
+            }]
+        },
+        options: {
+            responsive: false
+        }
+    });
+</script>
+</body>
+</html>
