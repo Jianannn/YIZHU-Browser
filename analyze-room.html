@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>数据分析 - 易住酒店后台管理系统</title>
+    <link rel="icon" href="favicon.ico" type="image/ico">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="css/style.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="lyear-layout-web">
+
+    <div class="lyear-layout-sidebar-scroll">
+
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-sm-6 col-lg-3">
+                    <div class="card bg-primary">
+                        <div class="card-body clearfix">
+                            <div class="pull-right">
+                                <p class="h6 text-white m-t-0">平均客单价</p>
+                                <p class="h3 text-white m-b-0">495.75 元</p>
+                            </div>
+                            <div class="pull-left"> <span class="img-avatar img-avatar-48 bg-translucent"><i class="mdi mdi-currency-cny fa-1-5x"></i></span> </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-3">
+                    <div class="card bg-purple">
+                        <div class="card-body clearfix">
+                            <div class="pull-right">
+                                <p class="h6 text-white m-t-0">今日未到店住户</p>
+                                <p class="h3 text-white m-b-0">98 位</p>
+                            </div>
+                            <div class="pull-left"> <span class="img-avatar img-avatar-48 bg-translucent"><i class="mdi mdi-car fa-1-5x"></i></span> </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-3">
+                    <div class="card bg-success">
+                        <div class="card-body clearfix">
+                            <div class="pull-right">
+                                <p class="h6 text-white m-t-0">今日已住店客户</p>
+                                <p class="h3 text-white m-b-0">231 位</p>
+                            </div>
+                            <div class="pull-left"> <span class="img-avatar img-avatar-48 bg-translucent"><i class="mdi mdi-account fa-1-5x"></i></span> </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-3">
+                    <div class="card bg-danger">
+                        <div class="card-body clearfix">
+                            <div class="pull-right">
+                                <p class="h6 text-white m-t-0">今日新增预定</p>
+                                <p class="h3 text-white m-b-0">257 间</p>
+                            </div>
+                            <div class="pull-left"> <span class="img-avatar img-avatar-48 bg-translucent"><i class="mdi mdi-account-multiple-plus fa-1-5x"></i></span> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-1">筛选：</div>
+                <div class="col-md-2">
+                    <select class="form-control" id="selectTime" name="selectTime" size="1">
+                        <option value="0">本周</option>
+                        <option value="1">本月</option>
+                        <option value="2">本年</option>
+                        <option value="3">迄今</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header"><h4>住房时长</h4></div>
+                        <div class="card-body">
+                            <canvas id="chart-vbar-1" width="400" height="250"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header"><h4>住房偏好</h4></div>
+                        <div class="card-body">
+                            <canvas id="chart-vbar-2" width="400" height="250"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header"><h4>房型比例</h4></div>
+                        <div class="card-body">
+                            <canvas id="chart-pie-1" width="400" height="280"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header"><h4>订单来源</h4></div>
+                        <div class="card-body">
+                            <canvas id="chart-pie-2" width="400" height="280"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/perfect-scrollbar.min.js"></script>
+<script type="text/javascript" src="js/main.min.js"></script>
+
+<!--图表插件-->
+<script type="text/javascript" src="js/Chart.js"></script>
+<script type="text/javascript">
+    new Chart($("#chart-vbar-1"), {
+        type: 'bar',
+        data: {
+            labels: ["<1天", "1天", "2-3天", "4-7天", "8-30天", ">30天"],
+            datasets: [{
+                label: "间/日",
+                backgroundColor: "rgba(51,202,185,0.5)",
+                borderColor: "rgba(0,0,0,0)",
+                hoverBackgroundColor: "rgba(51,202,185,0.7)",
+                hoverBorderColor: "rgba(0,0,0,0)",
+                data: [87, 429, 380, 147, 54, 35, 9]
+            },
+                {
+                    label: "历史平均",
+                    backgroundColor: "rgba(213,215,216,0.8)",
+                    borderColor: "rgba(0,0,0,0)",
+                    hoverBackgroundColor: "rgba(213,215,216,0.8)",
+                    hoverBorderColor: "rgba(0,0,0,0)",
+                    data: [82, 398, 372, 139, 50, 21, 9]
+                }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+    new Chart($("#chart-vbar-2"), {
+        type: 'bar',
+        data: {
+            labels: ["喜欢安静", "喜欢高楼层", "靠近楼梯/电梯", "远离楼梯/电梯", "无烟", "无具体偏好"],
+            datasets: [{
+                label: "间/次",
+                backgroundColor: "rgba(51,202,185,0.5)",
+                borderColor: "rgba(0,0,0,0)",
+                hoverBackgroundColor: "rgba(51,202,185,0.7)",
+                hoverBorderColor: "rgba(0,0,0,0)",
+                data: [340, 213, 89, 312, 268, 280]
+            },
+                {
+                    label: "历史平均",
+                    backgroundColor: "rgba(213,215,216,0.8)",
+                    borderColor: "rgba(0,0,0,0)",
+                    hoverBackgroundColor: "rgba(213,215,216,1)",
+                    hoverBorderColor: "rgba(0,0,0,0)",
+                    data: [332, 207, 76, 329, 231, 314]
+                }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+    new Chart($("#chart-pie-1"), {
+        type: 'pie',
+        data: {
+            labels: ["标准大床房", "标准双床房", "行政大床房", "行政双床间", "豪华大床房", "豪华双床房", "易住套房"],
+            datasets: [{
+                data: [193, 172, 94, 87, 162, 128, 24],
+                backgroundColor: ['orange', 'yellow', 'green', 'blue', 'indigo', 'purple', 'grey']
+            }]
+        },
+        options: {
+            responsive: false
+        }
+    });
+    new Chart($("#chart-pie-2"), {
+        type: 'pie',
+        data: {
+            labels: ["官方渠道", "到店开单", "携程OTA", "飞猪OTA", "去哪儿OTA", "马蜂窝APP", "其他OTA"],
+            datasets: [{
+                data: [432, 32, 523, 367, 146, 121, 108],
+                backgroundColor: ['orange', 'yellow', 'green', 'blue', 'indigo', 'purple', 'grey']
+            }]
+        },
+        options: {
+            responsive: false
+        }
+    });
+</script>
+</body>
+</html>

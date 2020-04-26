@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>数据分析 - 易住酒店后台管理系统</title>
+    <link rel="icon" href="favicon.ico" type="image/ico">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="css/style.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="lyear-layout-web">
+
+    <div class="lyear-layout-sidebar-scroll">
+
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-sm-6 col-lg-3">
+                    <div class="card bg-primary">
+                        <div class="card-body clearfix">
+                            <div class="pull-right">
+                                <p class="h6 text-white m-t-0">今日A餐厅流量</p>
+                                <p class="h3 text-white m-b-0">195 人次</p>
+                            </div>
+                            <div class="pull-left"> <span class="img-avatar img-avatar-48 bg-translucent"><i class="mdi mdi-account fa-1-5x"></i></span> </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-3">
+                    <div class="card bg-purple">
+                        <div class="card-body clearfix">
+                            <div class="pull-right">
+                                <p class="h6 text-white m-t-0">今日B餐厅流量</p>
+                                <p class="h3 text-white m-b-0">98 人次</p>
+                            </div>
+                            <div class="pull-left"> <span class="img-avatar img-avatar-48 bg-translucent"><i class="mdi mdi-account fa-1-5x"></i></span> </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-3">
+                    <div class="card bg-success">
+                        <div class="card-body clearfix">
+                            <div class="pull-right">
+                                <p class="h6 text-white m-t-0">今日C餐厅流量</p>
+                                <p class="h3 text-white m-b-0">130 人次</p>
+                            </div>
+                            <div class="pull-left"> <span class="img-avatar img-avatar-48 bg-translucent"><i class="mdi mdi-account fa-1-5x"></i></span> </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-3">
+                    <div class="card bg-danger">
+                        <div class="card-body clearfix">
+                            <div class="pull-right">
+                                <p class="h6 text-white m-t-0">今日综合好评率</p>
+                                <p class="h3 text-white m-b-0">100%</p>
+                            </div>
+                            <div class="pull-left"> <span class="img-avatar img-avatar-48 bg-translucent"><i class="mdi mdi-comment-outline fa-1-5x"></i></span> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-1">筛选：</div>
+                <div class="col-md-2">
+                    <select class="form-control" id="selectTime" name="selectTime" size="1">
+                        <option value="0">本周</option>
+                        <option value="1">本月</option>
+                        <option value="2">本年</option>
+                        <option value="3">迄今</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header"><h4>顾客就餐时间</h4></div>
+                        <div class="card-body">
+                            <canvas id="chart-vbar-1" width="400" height="250"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header"><h4>顾客消费价格</h4></div>
+                        <div class="card-body">
+                            <canvas id="chart-vbar-2" width="400" height="250"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6" style="text-align: center">
+                    <h4>人气最高菜品 TOP 10</h4>
+                </div>
+                <div class="col-md-6" style="text-align: center">
+                    <h4>人气最低菜品 TOP 10</h4>
+                </div>
+                <div class="col-md-6">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>A餐厅</th>
+                            <th>B餐厅</th>
+                            <th>C餐厅</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>101</td>
+                            <td>202</td>
+                            <td>303</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>101</td>
+                            <td>202</td>
+                            <td>303</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>101</td>
+                            <td>202</td>
+                            <td>303</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">4</th>
+                            <td>101</td>
+                            <td>202</td>
+                            <td>303</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">5</th>
+                            <td>101</td>
+                            <td>202</td>
+                            <td>303</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">6</th>
+                            <td>101</td>
+                            <td>202</td>
+                            <td>303</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">7</th>
+                            <td>101</td>
+                            <td>202</td>
+                            <td>303</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">8</th>
+                            <td>101</td>
+                            <td>202</td>
+                            <td>303</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">9</th>
+                            <td>101</td>
+                            <td>202</td>
+                            <td>303</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">10</th>
+                            <td>101</td>
+                            <td>202</td>
+                            <td>303</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>A餐厅</th>
+                            <th>B餐厅</th>
+                            <th>C餐厅</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>101</td>
+                            <td>202</td>
+                            <td>303</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>101</td>
+                            <td>202</td>
+                            <td>303</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>101</td>
+                            <td>202</td>
+                            <td>303</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">4</th>
+                            <td>101</td>
+                            <td>202</td>
+                            <td>303</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">5</th>
+                            <td>101</td>
+                            <td>202</td>
+                            <td>303</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">6</th>
+                            <td>101</td>
+                            <td>202</td>
+                            <td>303</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">7</th>
+                            <td>101</td>
+                            <td>202</td>
+                            <td>303</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">8</th>
+                            <td>101</td>
+                            <td>202</td>
+                            <td>303</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">9</th>
+                            <td>101</td>
+                            <td>202</td>
+                            <td>303</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">10</th>
+                            <td>101</td>
+                            <td>202</td>
+                            <td>303</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/perfect-scrollbar.min.js"></script>
+<script type="text/javascript" src="js/main.min.js"></script>
+
+<!--图表插件-->
+<script type="text/javascript" src="js/Chart.js"></script>
+<script type="text/javascript">
+    new Chart($("#chart-vbar-1"), {
+        type: 'bar',
+        data: {
+            labels: ["30分钟内", "30-60分钟", "60-90分钟", "90-120分钟", "120分钟以上"],
+            datasets: [{
+                label: "A餐厅",
+                backgroundColor: "rgba(51,202,185,0.5)",
+                borderColor: "rgba(0,0,0,0)",
+                hoverBackgroundColor: "rgba(51,202,185,0.7)",
+                hoverBorderColor: "rgba(0,0,0,0)",
+                data: [23, 99, 145, 125, 43]
+            },
+                {
+                    label: "B餐厅",
+                    backgroundColor: "rgba(50,154,199,0.8)",
+                    borderColor: "rgba(0,0,0,0)",
+                    hoverBackgroundColor: "rgba(50,154,199,1)",
+                    hoverBorderColor: "rgba(0,0,0,0)",
+                    data: [7, 69, 95, 105, 23]
+                },
+                {
+                    label: "C餐厅",
+                    backgroundColor: "rgba(213,215,216,0.8)",
+                    borderColor: "rgba(0,0,0,0)",
+                    hoverBackgroundColor: "rgba(213,215,216,1)",
+                    hoverBorderColor: "rgba(0,0,0,0)",
+                    data: [19, 134, 125, 65, 9]
+                }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+    new Chart($("#chart-vbar-2"), {
+        type: 'bar',
+        data: {
+            labels: ["¥100以下", "¥100-150", "¥150-250", "¥250-400", "¥400以上"],
+            datasets: [{
+                label: "A餐厅",
+                backgroundColor: "rgba(51,202,185,0.5)",
+                borderColor: "rgba(0,0,0,0)",
+                hoverBackgroundColor: "rgba(51,202,185,0.7)",
+                hoverBorderColor: "rgba(0,0,0,0)",
+                data: [7, 48, 186, 140, 82]
+            },
+                {
+                    label: "B餐厅",
+                    backgroundColor: "rgba(50,154,199,0.8)",
+                    borderColor: "rgba(0,0,0,0)",
+                    hoverBackgroundColor: "rgba(50,154,199,1)",
+                    hoverBorderColor: "rgba(0,0,0,0)",
+                    data: [21, 49, 105, 75, 8]
+                },
+                {
+                    label: "C餐厅",
+                    backgroundColor: "rgba(213,215,216,0.8)",
+                    borderColor: "rgba(0,0,0,0)",
+                    hoverBackgroundColor: "rgba(213,215,216,1)",
+                    hoverBorderColor: "rgba(0,0,0,0)",
+                    data: [78, 194, 95, 12, 2]
+                }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script>
+</body>
+</html>
