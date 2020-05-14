@@ -82,9 +82,9 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="card">
-                        <div class="card-header"><h4>顾客就餐时间</h4></div>
+                        <div class="card-header"><h4>餐厅今日人流量</h4></div>
                         <div class="card-body">
-                            <canvas id="chart-vbar-1" width="400" height="250"></canvas>
+                            <canvas id="chart-line-3" width="400" height="250"></canvas>
                         </div>
                     </div>
                 </div>
@@ -103,7 +103,7 @@
                     <h4>人气最高菜品 TOP 10</h4>
                 </div>
                 <div class="col-md-6" style="text-align: center">
-                    <h4>人气最低菜品 TOP 10</h4>
+                    <h4>后厨消耗食材 TOP 10</h4>
                 </div>
                 <div class="col-md-6">
                     <table class="table table-hover">
@@ -268,45 +268,41 @@
 <!--图表插件-->
 <script type="text/javascript" src="js/Chart.js"></script>
 <script type="text/javascript">
-    new Chart($("#chart-vbar-1"), {
-        type: 'bar',
+    new Chart($("#chart-line-3"), {
+        type: 'line',
         data: {
-            labels: ["30分钟内", "30-60分钟", "60-90分钟", "90-120分钟", "120分钟以上"],
+            labels: ["0:00", "2:00", "4:00", "6:00", "8:00", "10:00", "12:00", "14:00", "16:00", "18:00", "20:00", "22:00"],
             datasets: [{
                 label: "A餐厅",
-                backgroundColor: "rgba(51,202,185,0.5)",
-                borderColor: "rgba(0,0,0,0)",
-                hoverBackgroundColor: "rgba(51,202,185,0.7)",
-                hoverBorderColor: "rgba(0,0,0,0)",
-                data: [23, 99, 145, 125, 43]
+                fill: false,
+                backgroundColor: "rgba(51,202,185,0.7)",
+                borderColor: "rgba(51,202,185,0.7)",
+                borderWidth: 3,
+                pointRadius: 0,
+                data: [4, 6, 6, 58, 96, 168, 188, 197]
             },
                 {
                     label: "B餐厅",
-                    backgroundColor: "rgba(50,154,199,0.8)",
-                    borderColor: "rgba(0,0,0,0)",
-                    hoverBackgroundColor: "rgba(50,154,199,1)",
-                    hoverBorderColor: "rgba(0,0,0,0)",
-                    data: [7, 69, 95, 105, 23]
-                },
+                    fill: false,
+                    borderColor: "rgba(50,154,199,1)",
+                    backgroundColor: "rgba(50,154,199,1)",
+                    borderWidth: 3,
+                    pointRadius: 0,
+                    data: [31, 38, 39, 39, 39, 78, 88, 98]
+            },
                 {
                     label: "C餐厅",
-                    backgroundColor: "rgba(213,215,216,0.8)",
-                    borderColor: "rgba(0,0,0,0)",
-                    hoverBackgroundColor: "rgba(213,215,216,1)",
-                    hoverBorderColor: "rgba(0,0,0,0)",
-                    data: [19, 134, 125, 65, 9]
+                    fill: false,
+                    borderColor: "rgba(213,215,216,1)",
+                    backgroundColor: "rgba(213,215,216,1)",
+                    borderWidth: 3,
+                    pointRadius: 0,
+                    data: [0, 0, 32, 59, 99, 109, 110, 130]
                 }]
         },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
-        }
+        options: {}
     });
+
     new Chart($("#chart-vbar-2"), {
         type: 'bar',
         data: {
