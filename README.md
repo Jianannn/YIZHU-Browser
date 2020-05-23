@@ -1,8 +1,6 @@
 # YIZHU-Browser 
-##YIZHU-Browser is based on "Light Year Admin"
+# 易住酒店后台管理系统
+## YIZHU-Browser is based on "Light Year Admin"
 
-#### 原光年模板演示网址
-[http://lyear.itshubao.com](http://lyear.itshubao.com)
-
-#### 其他插件整合示例
-[点击查看其他插件整合](https://gitee.com/yinqi/Light-Year-Example)
+login.html为登陆界面 暂未接入后端 无需密码即可登陆
+index.html为服务端主页
